@@ -4,6 +4,12 @@
 #include <cuda_runtime_api.h>
 #include "cudaUtils.h"
 
+#ifdef __JETBRAINS_IDE__
+#define threadIdx();
+#define blockIdx();
+#define blockDim();
+#endif
+
 __global__ void cube(float * d_out, float * d_in){
     int id = threadIdx.x;
     float value = d_in[id];
