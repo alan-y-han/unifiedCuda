@@ -4,6 +4,18 @@ set(CMAKE_CXX_STANDARD 11)
 
 find_package(CUDA REQUIRED)
 
+set(CUDA_NVCC_FLAGS "
+#        -gencode;arch=compute_30,code=sm_30;
+#        -gencode;arch=compute_35,code=sm_35;
+#        -gencode;arch=compute_35,code=compute_35;
+#        -gencode;arch=compute_20,code=sm_20;
+#        -gencode;arch=compute_11,code=sm_11;
+#        -gencode;arch=compute_12,code=sm_12;
+#        -gencode;arch=compute_13,code=sm_13;
+")
+
+set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS} "-Xcompiler -Wextra -G")
+
 include_directories(${EIGEN_INCLUDE_DIRS})
 
 # Find all source files
